@@ -1,0 +1,136 @@
+<!--
+    AUTHOR-HOME PAGE
+    This template is rendered on the server using the EJS template engine, it is a webpage that displays the details 
+    of a blog, including the title, subtitle, author name, and a list of draft and published articles. It also includes 
+    navigation links, buttons to perform actions on the articles such as editing, publishing, deleting and share. The 
+    script function shareArticle(id) is used to redirect to the share-article page with the article_id passed as a query 
+    parameter.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Declares the character encoding for the HTML document -->
+        <meta charset="UTF-8">
+        <!-- Ensures that the page is rendered using the latest version of the browser -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- Setting the viewport to make the website responsive across different devices -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Title of the webpage -->
+        <title>MyBlog - Author</title>
+        <!-- Link to the css file for the author home page -->
+        <link rel="stylesheet" href="/css/author_home.css">
+    </head>
+    <body>
+        <!-- Navigation bar with links to logout, go to reader page, and settings -->
+        <nav>
+            <!-- Link to logout page -->
+            <div class="log_out">
+                <a href="logout">Log out</a>
+            </div>
+            <!-- Link to author home page -->
+            <div>
+                <a href="reader-home">Go to Reader Page</a>
+            </div>
+            <!-- Link to settings page -->
+            <div class="settings">
+                <a href="settings">Settings</a>
+            </div>
+        </nav>
+        <!-- A visual separator -->
+        <p>======================================================</p>
+        <!--Author Page second heading-->
+        <div class="mode">
+            <p>Author Page</p>
+        </div>
+
+        <!-- Blog details display, includes title, subtitle and author name -->
+        <div>
+            <!-- Displays the blog title if it exists, otherwise displays an empty string -->
+            <h1><%= typeof blogDetails != 'undefined' && blogDetails.blog_title || '' %></h1>
+            <!-- Displays the blog subtitle if it exists, otherwise displays an empty string -->
+            <h2><%= typeof blogDetails != 'undefined' && blogDetails.blog_subtitle || '' %></h2>
+            <!-- Displays the author name if it exists, otherwise displays an empty string -->
+            <p><%=  typeof blogDetails != 'undefined' && blogDetails.author_name || '' %></p>
+        </div>
+        <div class="draft">
+            <h3>Draft Articles</h3>
+            <!-- Table for draft articles, with columns for title, subtitle, creation date, last modified, and 
+                actions (edit, publish, and delete) -->
+            <table>
+                <!--adding table headings-->
+                <tr>
+                    <th>Title</th>
+                    <th>Subtitle</th>
+                    <th>Created</th>
+                    <th>Last Modified</th>
+                    <th>Actions</th>
+                </tr>
+
+                <!-- Looping through the draft articles array to display the details of each article -->
+                <% draftArticles.forEach(function(row) { %>
+                <tr>
+                    <td><%= row.title %></td>
+                    <td><%= row.subtitle %></td>
+                    <td><%= row.creation_date %></td>
+                    <td><%= row.last_modified %></td>
+                    <td>
+                        <!-- Link to the edit draft page, passing in the article id as a query parameter -->
+                        <a class="blue_button" href='/edit-draft?article_id=<%=row.article_id %>'>Edit</a>
+
+                        <!-- Link to the publish draft page, passing in the article id as a query parameter -->
+                        <a class="green_button" href='/publish-draft?article_id=<%=row.article_id %>'>Publish</a>
+
+                        <!-- Link to the delete draft page, passing in the article id as a query parameter -->
+                        <a class="red_button" href='/delete-draft?article_id=<%=row.article_id %>'>Delete</a>
+                    </td>
+                </tr>
+                <% }); %>
+            </table>
+            <!-- Button to create a new draft article -->
+            <button onclick="location.href='/create-draft'">Create New Draft</button>
+        </div>
+        <div class="published">
+            <h3>Published Articles</h3>
+            <!-- Table for published articles, with columns for title, subtitle, creation date, last modified, publication_date 
+                and actions (share, and delete) -->
+            <table>
+                <!--adding table headings-->
+                <tr>
+                    <th>Title</th>
+                    <th>Subtitle</th>
+                    <th>Created</th>
+                    <th>Last Modified</th>
+                    <th>Publication Date</th>
+                    <th>Likes</th>
+                    <th>Actions</th>
+                </tr>
+                <!-- Looping through the published articles array to display the details of each article -->
+                <% publishedArticles.forEach(function(row) { %>
+                <tr>
+                    <td><%= row.title %></td>
+                    <td><%= row.subtitle %></td>
+                    <td><%= row.creation_date %></td>
+                    <td><%= row.publication_date %></td>
+                    <td><%= row.last_modified %></td>
+                    <td><%= row.likes %></td>
+                    <td>
+                        <!-- Share button, passing in the article id as a parameter -->
+                        <button onclick="shareArticle('<%= row.article_id %>')">Share</button>
+
+                        <!-- Link to the delete draft page, passing in the article id as a query parameter -->
+                        <a class="red_button" href='/delete-draft?article_id=<%=row.article_id %>'>Delete</a>
+                    </td>
+                </tr>
+                <% }); %>
+            </table>
+        </div>
+        <script>
+            // accepts article_id as parameter and generates an alert containing the persolised link to the article that could be shared
+            function shareArticle(id) {
+                var shareLink = window.location.origin + "/display-article?article_id=" + id;
+                alert("Share this link: " + shareLink);
+            }
+            </script>
+    </body>
+</html>

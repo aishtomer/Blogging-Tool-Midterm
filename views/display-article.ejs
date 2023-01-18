@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <!-- Ensures that the page is rendered using the latest version of the browser -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- Setting the viewport to make the website responsive across different devices -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Blogging</title>
+        <!-- Link to the css file for the display_article page -->
+        <link rel="stylesheet" href="/css/display_article.css">
+    </head>
+    <body>
+        <nav>
+            <div class="reader_mode">
+                <!-- Link to go back to the reader home page -->
+                <a href="reader-home">Back</a>
+            </div>
+        </nav>
+        <div class="main_content">
+            <!-- Display the title of the article -->
+            <h1><%= data.title %></h1>
+            <!-- Display the subtitle of the article -->
+            <h2><%= data.subtitle %></h2>
+            <ul>
+                <!-- Display the publication date of the article -->
+                <li>Published on: <%= data.publication_date %></li>
+                <!-- Display the number of likes for the article -->
+                <li>Number of likes: <%= data.likes %></li>
+            </ul>
+            <!-- Link to like an article -->
+            <a href='/like-article?article_id=<%=data.article_id %>'>Like</a>
+
+            <!-- Display the content of the article -->
+            <p><%= data.content %></p>
+        </div> 
+
+        <!-- Form for submitting a comment on the article -->
+        <form action="" method="post">
+            <label for="comment">Comment:</label>
+            <!-- Text area for entering the comment -->
+            <textarea name="comment" id="comment"></textarea>
+            <!-- Submit button to submit the comment -->
+            <button type="submit">Submit Comment</button>
+        </form>
+
+        <h3>Previous Comments</h3>
+        <ul>
+            <!-- Display previous comments on the article -->
+            <% comments.forEach(function(comment) { %>
+                <li>
+                    <p><%= comment.text %></p>
+                    <br>
+                    <span><%= comment.pub_date %></span>
+                </li>
+            <% }); %>
+        </ul>
+
+    </body>
+</html>

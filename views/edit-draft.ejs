@@ -1,0 +1,75 @@
+<!--
+    EDIT DRAFT ARTICLE
+    This is an HTML template for an article editing page, where the user can update the title, subtitle and content 
+    of an existing article. The page includes a form with input fields for the title, subtitle and content, as well 
+    as a submit button to update the article. The template also includes links to navigate to the "log out", "author home" 
+    and "settings" pages, and displays the creation and last modified date of the article being edited.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Declares the character encoding for the HTML document -->
+        <meta charset="UTF-8">
+        <!-- Ensures that the page is rendered using the latest version of the browser -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- Setting the viewport to make the website responsive across different devices -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Title of the webpage -->
+        <title>MyBlog - Edit Draft</title>
+        <!-- Link to the css file for the page -->
+        <link rel="stylesheet" href="/css/form.css">
+    </head>
+    <body>
+        <nav>
+            <div class="author_mode">
+                <!-- Link to log out -->
+                <a href="logout">Log out</a>
+            </div>
+            <div class="mosde">
+                <!-- Link to go to the author home page -->
+                <a href="author-home">Go to Author Page</a>
+            </div>
+            <div class="settings">
+                <!-- Link to go to the settings page -->
+                <a href="settings">Settings</a>
+            </div>
+        </nav>
+
+        <!-- Title of the page -->
+        <h1>Edit Article</h1>
+        <div class="article_metadata">
+            <!-- Display the creation date of the article -->
+            <p>Created on: <%= typeof data != 'undefined' && data.creation_date || '' %></p>
+
+            <!-- Display the last modified date of the article -->
+            <p>Last Modified: <%= typeof data != 'undefined' && data.last_modified || '' %></p>
+        </div>
+
+        <!-- Form to edit the article -->
+        <form action="" method="post" class="settings-form">
+            <div class="settings-form">
+                <label for="title">Title: </label>
+                <!-- Input field for the title of the article -->
+                <input type="text" name="title"  id="title" value="<%= typeof data != 'undefined' && data.title || '' %>" required>
+            </div>
+
+            <div class="settings-form">
+                <label for="subtitle">Subtitle: </label>
+                <!-- Input field for the subtitle of the article -->
+                <input type="text" name="subtitle"  id="subtitle" value="<%= typeof data != 'undefined' && data.subtitle || ''%>" required>
+            </div>
+
+            <div class="settings-form">
+                <label for="content">Content: </label>
+                <!-- Text area for the content of the article -->
+                <textarea name="content" id="content" required><%= typeof data != 'undefined' && data.content || ''%></textarea>
+            </div> 
+
+            <div class="settings-form">
+                <!-- Submit button to update the article -->
+                <input type="submit" value="Update">
+            </div>
+        </form>
+    </body>
+</html>

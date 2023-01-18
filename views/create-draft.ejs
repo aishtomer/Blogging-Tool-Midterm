@@ -1,0 +1,63 @@
+<!--
+    CREATE NEW DRAFT PAGE
+    This code is an HTML template which is rendered on the client side. It is a webpage that allows users to create a 
+    new draft article, by providing a title, subtitle, and content. It has a form which allows user to submit the details 
+    and the form action points to '/create-draft' and the method used is 'post'. The navigation bar includes links to logout, 
+    go to the author page, and settings.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Declares the character encoding for the HTML document -->
+        <meta charset="UTF-8">
+        <!-- Ensures that the page is rendered using the latest version of the browser -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- Setting the viewport to make the website responsive across different devices -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Title of the webpage -->
+        <title>MyBlog - Create Draft</title>
+        <!-- Link to the css file for the page -->
+        <link rel="stylesheet" href="/css/form.css">
+    </head>
+    <body>
+        <!-- Navigation bar with links to logout, go to author page, and settings -->
+        <nav>
+            <div class="author_mode">
+                <!-- Link to logout page -->
+                <a href="logout">Log out</a>
+            </div>
+            <div>
+                <!-- Link to author page -->
+                <a href="author-home">Go to Author Page</a>
+            </div>
+            <div class="settings">
+                <!-- Link to settings page -->
+                <a href="settings">Settings</a>
+            </div>
+        </nav>
+        <div>
+            <div>
+                <h1>Create New Draft</h1>
+                <!-- Form to create a new draft, with fields for title, subtitle, and content, and a submit button -->
+                <form action="/create-draft" method="post">
+                    <label for="title">Title:</label>
+                    <!-- Input field for the title of the draft article -->
+                    <input type="text" name="title" id="title">
+
+                    <label for="subtitle">Subtitle:</label>
+                    <!-- Input field for the subtitle of the draft article -->
+                    <input type="text" name="subtitle" id="subtitle">
+
+                    <label for="content">Content:</label>
+                    <!-- Text area for the content of the draft article -->
+                    <textarea name="content" id="content"></textarea>
+
+                    <!-- Submit button to create a new draft article -->
+                    <input type="submit" value="Create Draft">
+                </form>
+            </div> 
+            
+        </div>
+    </body>
+</html>

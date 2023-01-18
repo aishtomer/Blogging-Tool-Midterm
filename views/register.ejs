@@ -1,0 +1,70 @@
+<!--
+    REGISTER PAGE
+    This code is a HTML template for a Sign Up page for a blogging website. It includes a form for users to input their email, 
+    first name, last name, and password, and a submit button to send this information to the server for registration. There is 
+    also a link to a login page for users who already have an account. The page is styled using a css file linked at the top of 
+    the page.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Declares the character encoding for the HTML document -->
+        <meta charset="UTF-8">
+        <!-- Ensures that the page is rendered using the latest version of the browser -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- Setting the viewport to make the website responsive across different devices -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Title of the webpage -->
+        <title>MyBlog - Register</title>
+        <!-- Link to the css file for the page -->
+        <link rel="stylesheet" href="/css/form.css">
+    </head>
+    <body>
+        <!--Navigation Bar-->
+        <nav>
+            <div class="author_mode">
+                <!-- Link to login page -->
+                <a href="login">Sign In</a>
+            </div>
+        </nav>
+
+        <!--Page Heading-->
+        <h1>Sign Up</h1>
+
+        <!--Sign Up Form-->
+        <form action="" method="post" class="register-form">
+            <!-- Email input field -->
+            <div class="register-form">
+                <label for="email">Email: </label>
+                <input type="email" name="email" placeholder="Email" id="email" required>
+            </div>
+
+            <!-- First name input field -->
+            <div class="register-form">
+                <label for="first_name">First name: </label>
+                <input type="text" name="first_name" placeholder="First name" id="first_name" required>
+            </div>
+
+            <!-- Last name input field -->
+            <div class="register-form">
+                <label for="last_name">Last name: </label>
+                <input type="text" name="last_name" placeholder="Last name" id="last_name" required>
+            </div>
+
+            <!-- Password input field -->
+            <div class="register-form">
+                <label for="password">Password: </label>
+                <input type="password" name="password" placeholder="Passoword" id="password" required>
+            </div>
+
+            <!-- Submit button -->
+            <div class="register-form">
+                <input type="submit" value="Sign Up">
+            </div>
+        </form>
+
+        <!-- Link to login page -->
+        <a href="login">Already have an account? Sign in here</a>
+    </body>
+</html>

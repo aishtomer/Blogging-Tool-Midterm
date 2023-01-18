@@ -1,0 +1,70 @@
+<!--
+    READER HOME
+    This code is a template for the reader home page of a blogging website, where it displays a list of articles grouped 
+    by the author name and include the title, subtitle, and publication date of the articles. It also includes a navigation 
+    bar with links to log out, go to the author page, and access user settings. The template is rendered with server-side 
+    data and uses EJS syntax to insert dynamic data and control flow.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Declares the character encoding for the HTML document -->
+        <meta charset="UTF-8">
+        <!-- Ensures that the latest version of IE is used when rendering the page -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- Sets the viewport to the width of the device and sets the initial zoom level to 1 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Title of the webpage -->
+        <title>MyBlog - Reader Home</title>
+        <!-- Link to the css stylesheet -->
+        <link rel="stylesheet" type="text/css" href="/css/reader_home.css">
+    </head>
+    <body>
+        <nav>
+            <!-- Link to logout page -->
+            <div class="author_mode">
+                <a href="login">Log out</a>
+            </div>
+            <!-- Link to author home page -->
+            <div class="mosde">
+                <a href="author-home">Go to Author Page</a>
+            </div>
+            <!-- Link to settings page -->
+            <div class="settings">
+                <a href="settings">Settings</a>
+            </div>
+        </nav>
+        <!-- A visual separator -->
+        <p class="equals">======================================================</p>
+        <!--Second heading indicating that this is a reader page-->
+        <div class="mode">
+            <p>Reader Page</p>
+        </div>
+        <!-- Iterating through each author who have published articles -->
+        <% for (var author_name in articlesByAuthor) { %>
+            <!-- Blog title for each author -->
+            <h2><%= articlesByAuthor[author_name].blog_title %></h2>
+            <!-- Blog subtitle for each author -->
+            <h3><%= articlesByAuthor[author_name].blog_subtitle %></h3>
+            <!-- Author's name -->
+            <h4><%= articlesByAuthor[author_name].author_name %></h4>
+            <!-- Unordered list to display articles by the author -->
+            <ul>
+                <!-- Iterating through each article by the current author -->
+                <% articlesByAuthor[author_name].articles.forEach(function(row) { %>
+                    <!-- List item to display the title of the article -->
+                    <li>
+                        <!-- Link to the article page, passing in the article id as a query parameter -->
+                        <a href='/display-article?article_id=<%=row.article_id %>'>
+                            <%= row.title %>
+                        </a>
+                        <!-- Displaying the publication date of the article -->
+                        <p>Published on <%= row.pub_date %></p>
+                    </li>
+                <% }); %>
+            </ul>
+        <% } %>
+        
+    </body>
+</html>

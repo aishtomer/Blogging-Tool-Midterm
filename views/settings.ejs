@@ -1,0 +1,57 @@
+<!--
+    SETTINGS PAGE
+    The code creates a webpage for updating the blog settings. It includes a form for updating the blog title, subtitle, 
+    and author name. The form is submitted using the HTTP POST method, and the data is passed to the server-side for further 
+    processing. The page also includes a navigation bar with a link to go back to the author home page. The code also uses 
+    an ejs template to check if any data is passed to the template, if any it will be used to fill the input fields with the 
+    current values of the blog settings. The CSS file used is 'settings.css' to style the page.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Declares the character encoding for the HTML document -->
+        <meta charset="UTF-8">
+        <!-- Ensures that the page is rendered using the latest version of the browser -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- Setting the viewport to make the website responsive across different devices -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Title of the webpage -->
+        <title>MyBlog - Settings</title>
+        <!-- Link to the css file for the page -->
+        <link rel="stylesheet" href="/css/settings.css">
+    </head>
+    <body>
+        <nav>
+            <!-- Go back to the author's home page -->
+            <div class="author_mode">
+                <a href="author-home">Back</a>
+            </div>
+        </nav>
+        <h1>Update Blog Settings</h1>
+        <form action="" method="post" class="settings-form">
+            <!-- Edit Title of the blog -->
+            <div class="settings-form">
+                <label for="blog_title">Blog Title: </label>
+                <input type="text" name="blog_title"  id="blog_title" value="<%= typeof data != 'undefined' && data.blog_title || '' %>" required>
+            </div>
+
+            <!-- Edit Subtitle of the blog -->
+            <div class="settings-form">
+                <label for="blog_subtitle">Blog Subtitle: </label>
+                <input type="text" name="blog_subtitle"  id="blog_subtitle" value="<%= typeof data != 'undefined' && data.blog_subtitle || ''%>" required>
+            </div>
+
+            <!-- Edit Author's Name-->
+            <div class="settings-form">
+                <label for="author_name">Author Name: </label>
+                <input type="text" name="author_name"  id="author_name" value="<%= typeof data != 'undefined' && data.author_name || ''%>" required>
+            </div> 
+
+            <!--Update Blog Details-->
+            <div class="settings-form">
+                <input type="submit" value="Update">
+            </div>
+        </form>
+    </body>
+</html>

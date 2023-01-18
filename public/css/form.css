@@ -1,0 +1,136 @@
+/*
+This is a CSS stylesheet that styles various elements in an HTML document.
+It includes styles for various page elements like headings, forms, inputs, textareas, and navigation bar.
+*/
+
+/*
+The font-family property sets the font for the entire document to Georgia, 'Times New Roman', Times, serif
+*/
+html {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* nav- sets the display property, justify-content, align-items, etc */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px;
+    background-color: #333;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* style links inside the navigation bar */
+nav a {
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+/* style links in navigation bar for hover state */
+nav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/*
+This sets the text alignment for the h1 elements to center
+*/
+h1{
+    text-align: center;
+}
+
+/*
+This styles the form elements on the page. It sets the width to 80%, margins to 0 auto, padding to 30px, border-radius 
+to 10px, and background-color to #f2f2f2
+*/
+form {
+    width: 80%;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: #f2f2f2;
+}
+
+/*
+This styles all elements that are direct children of the body tag and are anchor tags. It sets the display to 
+inline-block, margin-left to 120px, and margin-top to 10px
+*/
+body > a{
+    display: inline-block;
+    margin-left: 120px;
+    margin-top: 10px;
+}
+
+/*
+This styles all label elements within a form. It sets the font-size to 18px, font-weight to bold, margin-bottom to 15px, 
+margin-top to 15px, and display to block
+*/
+form label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    display: block;
+}
+
+/*
+This styles all input elements of type text, email, and password within a form. It sets the width to 100%, padding to 
+12px 20px, margin to 8px 0, box-sizing to border-box, border to 2px solid #ccc, border-radius to 4px, and font-size to 20px
+*/
+form input[type="text"], form input[type="email"], form input[type="password"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 20px;
+}
+
+/*
+This styles all input elements of type submit within a form. It sets the width to 100%, background-color to #1767d1, 
+color to white, padding to 14px 20px, margin to 15px 0, border to none, border-radius to 4px, cursor to pointer, font-size 
+to 18px, and font-weight to bold
+*/
+form input[type="submit"] {
+    width: 100%;
+    background-color: #1767d1;
+    color: white;
+    padding: 14px 20px;
+    margin: 15px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* style submit button of the form */
+form input[type="submit"]:hover {
+    margin-top: 15px;
+    background-color: #054bd7;
+}
+
+/* styling the text field of the form */
+textarea{
+    width: 95%;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 12px 20px;
+}
+
+
+/* style article's metadata like date of creation, last*/
+.article_metadata{
+    margin-left: 120px;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+

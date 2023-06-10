@@ -1,4 +1,4 @@
-##  WordBlog ##
+## WebVerse ##
 ### Web-based Blogging Application ###
 
 - Developed using EJS, CSS, JavaScript, and the Express.js framework with a focus on usability and accessibility.
